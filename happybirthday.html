@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Do You want to proceed, love? 💜</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f3e8ff,
+                    #d8b4fe,
+                    #a855f7,
+                    #7e22ce,
+                    #581c87
+                );
+        }
+
+        /* =========================
+           MAIN QUESTION BOX
+        ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 550px;
+
+            padding: 45px 25px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(45, 0, 70, 0.35);
+
+            position: relative;
+
+            z-index: 5;
+
+            animation: containerAppear 0.8s ease;
+        }
+
+        @keyframes containerAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            margin: 0 0 15px;
+
+            color: #6b21a8;
+
+            font-size: 42px;
+
+            font-weight: 800;
+        }
+
+        .subtitle {
+            margin-bottom: 35px;
+
+            color: #7e22ce;
+
+            font-size: 18px;
+        }
+
+        /* =========================
+           BUTTON AREA
+        ========================= */
+
+        .buttons {
+            position: relative;
+
+            width: 100%;
+
+            height: 130px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 25px;
+        }
+
+        button {
+            border: none;
+
+            padding: 16px 40px;
+
+            border-radius: 15px;
+
+            color: white;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 7px 15px
+                rgba(0, 0, 0, 0.20);
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+        /* YES */
+
+        #yesBtn {
+            background: #22c55e;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+        #yesBtn:hover {
+            background: #16a34a;
+
+            transform: scale(1.08);
+        }
+
+        /* NO */
+
+        #noBtn {
+            background: #ef4444;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+        #noBtn:hover {
+            background: #dc2626;
+        }
+
+        /* NO ERROR */
+
+        #noBtn.error {
+            background: #555555;
+
+            cursor: not-allowed;
+
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px);
+            }
+
+            50% {
+                transform: translateX(10px);
+            }
+
+            75% {
+                transform: translateX(-10px);
+            }
+        }
+
+        /* =========================
+           ATTEMPT COUNTER
+        ========================= */
+
+        .attempt {
+            margin-top: 10px;
+
+            color: #9333ea;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           INVISIBLE YOUTUBE MUSIC
+        ========================= */
+
+        .music {
+            position: fixed;
+
+            width: 1px;
+            height: 1px;
+
+            border: 0;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            left: -10px;
+            bottom: -10px;
+        }
+
+        /* =========================
+           SURPRISE OVERLAY
+        ========================= */
+
+        #surprise {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 20;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 20px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(147, 51, 234, 0.35),
+                    rgba(59, 7, 100, 0.85)
+                );
+                
+        }
+
+        /* =========================
+           LOVE LETTER
+        ========================= */
+
+        .letter {
+            width: 95%;
+
+            max-width: 600px;
+
+            max-height: 85vh;
+
+            overflow-y: auto;
+
+            padding: 45px 35px;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7e22ce,
+                    #9333ea,
+                    #6b21a8,
+                    #581c87
+                );
+
+            box-shadow:
+                0 0 30px #d8b4fe,
+                0 0 70px
+                rgba(216, 180, 254, 0.75);
+
+            animation:
+                letterAppear
+                1s
+                cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes letterAppear {
+            0% {
+                opacity: 0;
+
+                transform:
+                    scale(0.2)
+                    rotate(-8deg);
+            }
+
+            70% {
+                transform:
+                    scale(1.05)
+                    rotate(2deg);
+            }
+
+            100% {
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    rotate(0);
+            }
+        }
+
+        .letter h2 {
+            margin-top: 0;
+
+            margin-bottom: 25px;
+
+            color: #f5d0fe;
+
+            font-size: 42px;
+
+            text-shadow:
+                0 0 15px
+                rgba(255, 255, 255, 0.35);
+        }
+
+        .letter p {
+            margin: 15px 0;
+
+            color: #ffffff;
+
+            font-size: 19px;
+
+            line-height: 1.7;
+        }
+
+        .signature {
+            margin-top: 30px;
+
+            color: #f3e8ff;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           HEARTS
+        ========================= */
+
+        .heart {
+            position: fixed;
+
+            bottom: -60px;
+
+            color: #c084fc;
+
+            font-size: 25px;
+
+            pointer-events: none;
+
+            z-index: 30;
+
+            user-select: none;
+
+            animation:
+                floatHeart
+                linear
+                forwards;
+
+            text-shadow:
+                0 0 10px
+                rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes floatHeart {
+            0% {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    translateX(0)
+                    rotate(0deg)
+                    scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+
+                transform:
+                    translateY(-55vh)
+                    translateX(30px)
+                    rotate(180deg)
+                    scale(1.5);
+            }
+
+            100% {
+                opacity: 0;
+
+                transform:
+                    translateY(-115vh)
+                    translateX(-30px)
+                    rotate(360deg)
+                    scale(1.8);
+            }
+        }
+
+        /* =========================
+           EXTRA SPARKLES
+        ========================= */
+
+        .sparkle {
+            position: fixed;
+
+            color: #f5d0fe;
+
+            pointer-events: none;
+
+            z-index: 31;
+
+            animation:
+                sparkleAnimation
+                2s
+                ease-out
+                forwards;
+        }
+
+        @keyframes sparkleAnimation {
+            0% {
+                opacity: 1;
+
+                transform:
+                    scale(0)
+                    rotate(0deg);
+            }
+
+            50% {
+                opacity: 1;
+
+                transform:
+                    scale(1.5)
+                    rotate(180deg);
+            }
+
+            100% {
+                opacity: 0;
+
+                transform:
+                    scale(0)
+                    rotate(360deg);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 35px 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .buttons {
+                height: 150px;
+
+                gap: 12px;
+            }
+
+            button {
+                padding: 14px 25px;
+
+                font-size: 18px;
+            }
+
+            .letter {
+                padding: 35px 22px;
+            }
+
+            .letter h2 {
+                font-size: 32px;
+            }
+
+            .letter p {
+                font-size: 16px;
+            }
+
+            .signature {
+                font-size: 18px;
+            }
+        }
+        .music {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    border: 0;
+  
+    </style>
+</head>
+
+
+<body>
+<iframe
+  class="music"
+  src="https://www.youtube.com/embed/K7QloSPisLg?autoplay=1&loop=1&playlist=K7QloSPisLg"
+  title="Tothapi - Panata"
+  allow="autoplay; encrypted-media"
+  referrerpolicy="strict-origin-when-cross-origin">
+</iframe>
+
+    <!-- =====================================
+         MAIN QUESTION
+    ====================================== -->
+
+    <div
+        class="container"
+        id="mainBox"
+    >
+
+        <h1>
+            Do you want to proceed, love? 
+        </h1>
+
+        <div class="subtitle">
+            Be honest... hehe 😏
+        </div>
+
+
+        <div class="buttons">
+
+            <button
+                id="yesBtn"
+            >
+                YES 💚
+            </button>
+            
+
+
+            <button
+                id="noBtn"
+            >
+                NO ❤️
+            </button>
+
+        </div>
+
+
+        <div class="attempt">
+            NO attempts:
+            <span id="counter">0</span>
+            / 6
+        </div>
+
+    </div>
+    
+
+
+
+    <!-- =====================================
+         INVISIBLE YOUTUBE MUSIC
+         
+         Hindi ito agad naglo-load.
+         Sa YES click pa lang ito magsisimula.
+    ====================================== -->
+
+    <iframe
+        id="musicFrame"
+        class="music"
+        title="Tothapi - Panata"
+        allow="autoplay; encrypted-media"
+        referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+
+
+
+    <!-- =====================================
+         SURPRISE SCREEN
+    ====================================== -->
+
+    <div
+        id="surprise"
+    >
+
+        <div class="letter">
+
+            <h2>
+                💜 Happy Birthday! 💜
+            </h2>
+
+
+            <p>
+                Happy Birthday.my love! 🎂💜
+            </p>
+
+
+            <p>
+                Sana maging masaya ang araw mo at ienjoy mo lang ang birthday mo.
+                at sana matupad ang lahat ng wishes
+                at dreams mo.
+            </p>
+
+
+            <p>
+                Thank you for being someone
+                so special.
+                You deserve all the happiness,
+                love, and beautiful moments
+             "   in the world.
+            </p>
+
+
+            <p>
+                Always remember that you are
+                loved, appreciated, and
+                very special. kahit na madalas tayo nagkakaroon ng tampuhan dahil sa hindi ko minsan pinagiisipan yung mga words na ginagamit ko. pero alam mo naman na mahal kita palagi, love 💜
+            </p>
+
+
+            <p>
+                May this new chapter of your life
+                be filled with wonderful memories,
+                laughter, love, and countless
+                blessings.
+            </p>
+
+
+            <div class="signature">
+
+                With lots of love 💜
+
+                <br>
+
+                Happy Birthday! 🎉💜
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+        /* =====================================
+           GET ELEMENTS
+        ====================================== */
+
+        const yesBtn =
+            document.getElementById("yesBtn");
+
+        const noBtn =
+            document.getElementById("noBtn");
+
+        const counter =
+            document.getElementById("counter");
+
+        const mainBox =
+            document.getElementById("mainBox");
+
+        const surprise =
+            document.getElementById("surprise");
+
+        const musicFrame =
+            document.getElementById("musicFrame");
+
+
+        /* =====================================
+           VARIABLES
+        ====================================== */
+
+        let noAttempts = 0;
+
+        let gameFinished = false;
+
+
+
+        /* =====================================
+           YES BUTTON
+        ====================================== */
+
+        yesBtn.addEventListener(
+            "click",
+            function () {
+                
+
+                if (gameFinished) {
+                    return;
+                }
+
+
+                gameFinished = true;
+
+
+                /*
+                    Itago ang main question
+                */
+
+                mainBox.style.display = "none";
+
+
+                /*
+                    Ipakita ang surprise
+                */
+
+                surprise.style.display = "flex";
+
+
+                /*
+                    =================================
+                    YOUTUBE BACKGROUND MUSIC
+                    =================================
+
+                    Sisimulan lang kapag YES
+                    ang pinindot.
+
+                    autoplay = 1
+                    loop = 1
+                    playlist = same video ID
+
+                    controls = 0
+                    para walang visible controls.
+                */
+
+                musicFrame.src =
+                    "https://www.youtube.com/embed/K7QloSPisLg" +
+                    "?autoplay=1" +
+                    "&loop=1" +
+                    "&playlist=K7QloSPisLg" +
+                    "&controls=0" +
+                    "&modestbranding=1";
+
+
+                /*
+                    Gumawa ng maraming hearts
+                */
+
+                createHearts();
+
+
+                /*
+                    Gumawa ng sparkles
+                */
+
+                createSparkles();
+
+            }
+        );
+
+
+
+        /* =====================================
+           NO BUTTON
+        ====================================== */
+
+        function moveNoButton() {
+
+            if (gameFinished) {
+                return;
+            }
+
+
+            /*
+                Dagdag ng attempt
+            */
+
+            noAttempts++;
+
+
+            counter.textContent =
+                noAttempts;
+
+
+            /*
+                =================================
+                SA IKA-6 NA ATTEMPT
+                =================================
+            */
+
+            if (noAttempts >= 6) {
+
+                noBtn.classList.add("error");
+
+                noBtn.textContent =
+                    "ERROR ❌";
+
+                noBtn.disabled = true;
+
+                noBtn.style.position =
+                    "relative";
+
+                noBtn.style.left = "auto";
+
+                noBtn.style.top = "auto";
+
+                return;
+            }
+
+
+            /*
+                =================================
+                RANDOM POSITION
+                =================================
+            */
+
+            const buttonsArea =
+                document.querySelector(
+                    ".buttons"
+                );
+
+
+            const areaRect =
+                buttonsArea.getBoundingClientRect();
+
+
+            const buttonWidth =
+                noBtn.offsetWidth;
+
+
+            const buttonHeight =
+                noBtn.offsetHeight;
+
+
+            /*
+                Maximum X/Y position
+            */
+
+            const maxX =
+                areaRect.width -
+                buttonWidth;
+
+
+            const maxY =
+                areaRect.height -
+                buttonHeight;
+
+
+            /*
+                Random position
+            */
+
+            const randomX =
+                Math.random() *
+                Math.max(maxX, 0);
+
+
+            const randomY =
+                Math.random() *
+                Math.max(maxY, 0);
+
+
+            /*
+                Gawing absolute
+                para makalipat
+            */
+
+            noBtn.style.position =
+                "absolute";
+
+
+            noBtn.style.left =
+                randomX + "px";
+
+
+            noBtn.style.top =
+                randomY + "px";
+        }
+
+
+
+        /* =====================================
+           DESKTOP
+           
+           Kapag hahabulin ang NO button
+           gamit ang mouse.
+        ====================================== */
+
+        noBtn.addEventListener(
+            "mouseenter",
+            function () {
+
+                moveNoButton();
+
+            }
+        );
+
+
+
+        /* =====================================
+           MOBILE / TOUCH
+        ====================================== */
+
+        noBtn.addEventListener(
+            "touchstart",
+            function (event) {
+
+                event.preventDefault();
+
+                moveNoButton();
+
+            }
+        );
+
+
+
+        /* =====================================
+           CLICK PROTECTION
+        ====================================== */
+
+        noBtn.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                moveNoButton();
+
+            }
+        );
+
+
+
+        /* =====================================
+           HEART CREATOR
+        ====================================== */
+
+        function createHeart() {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+
+            heart.classList.add(
+                "heart"
+            );
+
+
+            /*
+                Random heart
+            */
+
+            const hearts = [
+                "💜",
+                "💜",
+                "💜",
+                "💗",
+                "💕",
+                "💖"
+            ];
+
+
+            heart.innerHTML =
+                hearts[
+                    Math.floor(
+                        Math.random() *
+                        hearts.length
+                    )
+                ];
+
+
+            /*
+                Random horizontal position
+            */
+
+            heart.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            /*
+                Random size
+            */
+
+            heart.style.fontSize =
+                (
+                    20 +
+                    Math.random() * 40
+                ) +
+                "px";
+
+
+            /*
+                Random animation speed
+            */
+
+            heart.style.animationDuration =
+                (
+                    4 +
+                    Math.random() * 5
+                ) +
+                "s";
+
+
+            /*
+                Random delay
+            */
+
+            heart.style.animationDelay =
+                Math.random() *
+                0.5 +
+                "s";
+
+
+            document.body.appendChild(
+                heart
+            );
+
+
+            /*
+                Remove after animation
+            */
+
+            setTimeout(
+                function () {
+
+                    heart.remove();
+
+                },
+                10000
+            );
+        }
+
+
+
+        /* =====================================
+           MANY HEARTS
+        ====================================== */
+
+    
